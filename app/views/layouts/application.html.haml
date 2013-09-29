@@ -1,25 +1,18 @@
 !!!
-%html
+%html{"ng-app" => "AngularCasts"}
   %head
-    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
-      %title= content_for?(:title) ? yield(:title) : "Angular Casts"
-      %meta{:content => content_for?(:description) ? yield(:description) : "Angular Casts", :name => "description"}
-        = stylesheet_link_tag "application", :media => "all"
-        = javascript_include_tag "application"
-        = csrf_meta_tags
-        = yield(:head)
-  %body{:class => "#{controller_name} #{action_name}"}
-    .navbar.navbar-fixed-top
-      %nav.navbar-inner
-        .container
-          = render 'layouts/navigation'
-    #main{:role => "main"}
-      .container
-        .content
-          .row
-            .span12
-              = render 'layouts/messages'
-              = yield
-          %footer
-      / ! end of .container
-    / ! end of #main
+    %title Angular Casts
+    %link{href: "//releases.flowplayer.org/5.4.0/skin/minimalist.css", rel: "stylesheet"}/
+    = stylesheet_link_tag "application", media: "all"
+    = csrf_meta_tags
+  %body
+    %header
+      Angular Casts
+    = yield
+
+    %script{src: "//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"}
+    %script{src: "//releases.flowplayer.org/5.4.0/flowplayer.min.js"}
+    %script{src: "//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"}
+    %script{src: "//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular-resource.min.js"}
+
+    = javascript_include_tag "application"
